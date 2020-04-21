@@ -11,41 +11,53 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 
         <title>Transactions</title>
+
+        <h:outputStylesheet
+            library="webjars"
+            name="bootstrap/4.4.1-1/css/bootstrap.min-jsf.css"/>
     </h:head>
 
     <h:body>
-        <h1>
-            <h:outputText value="Transactions"/>
-        </h1>
+        <table>
+            <caption>
+                <h:outputText value="Transactions"/>
+            </caption>
 
-            <table>
-                <caption>
-                    <h:outputText value="Transactions"/>
-                </caption>
+            <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Amount</th>
+                </tr>
+            </thead>
 
-                <thead>
+            <tbody>
+                <ui:repeat value="#{transactionsController.transactions}" var="transaction">
                     <tr>
-                        <th scope="col">Date</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Amount</th>
+                        <td>
+                            <h:outputText value="#{transaction.date}"/>
+                        </td>
+                        <td>
+                            <h:outputText value="#{transaction.description}"/>
+                        </td>
+                        <td>
+                            <h:outputText value="#{transaction.amount}"/>
+                        </td>
                     </tr>
-                </thead>
+                </ui:repeat>
+            </tbody>
+        </table>
 
-                <tbody>
-                    <ui:repeat value="#{transactionsController.transactions}" var="transaction">
-                        <tr>
-                            <td>
-                                <h:outputText value="#{transaction.date}"/>
-                            </td>
-                            <td>
-                                <h:outputText value="#{transaction.description}"/>
-                            </td>
-                            <td>
-                                <h:outputText value="#{transaction.amount}"/>
-                            </td>
-                        </tr>
-                    </ui:repeat>
-                </tbody>
-            </table>
+        <h:outputScript
+                library="webjars"
+                name="bootstrap/4.4.1-1/js/bootstrap.min.js"/>
+
+        <h:outputScript
+                library="webjars"
+                name="jquery/3.4.0/jquery.slim.min.js"/>
+
+        <h:outputScript
+            library="webjars"
+            name="popper.js/1.14.3/umd/popper.js"/>
     </h:body>
 </html>
