@@ -35,13 +35,17 @@
                 <ui:repeat value="#{transactionsController.transactions}" var="transaction">
                     <tr>
                         <td>
-                            <h:outputText value="#{transaction.date}"/>
+                            <h:outputText value="#{transaction.date}">
+                                <f:converter converterId="localDateTimeConverter"/>
+                            </h:outputText>
                         </td>
                         <td>
                             <h:outputText value="#{transaction.description}"/>
                         </td>
                         <td>
-                            <h:outputText value="#{transaction.amount}"/>
+                            <h:outputText value="#{transaction.amount}">
+                                <f:convertNumber currencyCode="BRL" type="currency"  />
+                            </h:outputText>
                         </td>
                     </tr>
                 </ui:repeat>
