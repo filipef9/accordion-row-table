@@ -21,20 +21,20 @@ public class TransactionsController {
         transactions = new ArrayList<>();
 
         final Transaction firstTransacion = Transaction.of(
-                LocalDate.of(2019, 04, 17),
-                "DESCRIPTION 1",
+                LocalDate.of(2019, 4, 17),
+                "DESCRIPTION #1",
                 10.00D
         );
 
         final Transaction secondTransaction = Transaction.of(
-                LocalDate.of(2019, 04, 18),
-                "DESCRIPTION 2",
+                LocalDate.of(2019, 4, 18),
+                "DESCRIPTION #2",
                 15.00D
         );
 
         final Transaction thirdTransaction = Transaction.of(
-                LocalDate.of(2019, 04, 19),
-                "DESCRIPTION 3",
+                LocalDate.of(2019, 4, 19),
+                "DESCRIPTION #3",
                 20.00D
         );
 
