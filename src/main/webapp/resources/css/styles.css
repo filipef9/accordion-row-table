@@ -1,0 +1,20 @@
+.is-table-row {
+    display: grid;
+    grid-row-gap: 10px;
+    grid-template-columns: 14% 66% 20%;
+    grid-template-areas:
+        "isCellDate isCellDescription isCellAmount"
+        "isCellReceipt isCellReceipt isCellReceipt";
+}
+
+.isCellDate {
+    grid-area: isCellDate;
+}
+
+.isCellDescription {
+    grid-area: isCellDescription;
+}
+
+.isCellAmount {
+    grid-area: isCellAmount;
+}
