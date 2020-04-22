@@ -14,7 +14,11 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public static Transaction of(final LocalDate date, final String description, final Double amount) {
+    public static Transaction of(
+        final LocalDate date,
+        final String description,
+        final Double amount
+    ) {
         // TODO: implementar validação dos argumentos, antes de criar o objeto.
         return new Transaction(date, description, amount);
     }

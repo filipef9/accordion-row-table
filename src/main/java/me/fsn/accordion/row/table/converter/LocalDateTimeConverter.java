@@ -9,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * Faces converter for support of LocalDate
+ *
  * @author Juneau
  * Code from https://www.javacodegeeks.com/2015/06/utilizing-the-java-8-date-time-api-with-jsf-and-java-ee-7.html
  */
@@ -25,5 +26,5 @@ public class LocalDateTimeConverter implements Converter {
         final LocalDate dateValue = (LocalDate) value;
         return dateValue.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
-    
+
 }

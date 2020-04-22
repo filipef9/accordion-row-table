@@ -4,78 +4,78 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-    <h:head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
-        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+<h:head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 
-        <title>Transactions</title>
+  <title>Transactions</title>
 
-        <h:outputStylesheet
-            library="webjars"
-            name="bootstrap/4.4.1-1/css/bootstrap.min-jsf.css"/>
+  <h:outputStylesheet
+    library="webjars"
+    name="bootstrap/4.4.1-1/css/bootstrap.min-jsf.css"/>
 
-        <h:outputStylesheet
-                library="css"
-                name="styles.css"/>
-    </h:head>
+  <h:outputStylesheet
+    library="css"
+    name="styles.css"/>
+</h:head>
 
-    <h:body>
-        <table class="table table-striped">
-            <caption>
-                <h:outputText value="List of Transactions"/>
-            </caption>
+<h:body>
+  <table class="table table-striped">
+    <caption>
+      <h:outputText value="List of Transactions"/>
+    </caption>
 
-            <thead class="thead-dark">
-                <tr>
-                    <th colspan="3" class="is-table-row">
-                        <div class="isCellDate text-center">
-                            <h:outputText value="Date"/>
-                        </div>
-                        <div class="isCellDescription text-center">
-                            <h:outputText value="Description"/>
-                        </div>
-                        <div class="isCellAmount text-centet">
-                            <h:outputText value="Amount"/>
-                        </div>
-                    </th>
-                </tr>
-            </thead>
+    <thead class="thead-dark">
+    <tr>
+      <th colspan="3" class="is-table-row">
+        <div class="isCellDate text-center">
+          <h:outputText value="Date"/>
+        </div>
+        <div class="isCellDescription text-center">
+          <h:outputText value="Description"/>
+        </div>
+        <div class="isCellAmount text-centet">
+          <h:outputText value="Amount"/>
+        </div>
+      </th>
+    </tr>
+    </thead>
 
-            <tbody>
-                <ui:repeat value="#{transactionsController.transactions}" var="transaction">
-                    <tr>
-                        <td colspan="3" class="is-table-row">
-                            <div class="isCellDate text-center">
-                                <h:outputText value="#{transaction.date}">
-                                    <f:converter converterId="localDateTimeConverter"/>
-                                </h:outputText>
-                            </div>
-                            <div class="isCellDescription">
-                                <h:outputText value="#{transaction.description}"/>
-                            </div>
-                            <div class="isCellAmount text-right">
-                                <h:outputText value="#{transaction.amount}">
-                                    <f:convertNumber type="currency" locale="pt-BR"/>
-                                </h:outputText>
-                            </div>
-                        </td>
-                    </tr>
-                </ui:repeat>
-            </tbody>
-        </table>
+    <tbody>
+    <ui:repeat value="#{transactionsController.transactions}" var="transaction">
+      <tr>
+        <td colspan="3" class="is-table-row">
+          <div class="isCellDate text-center">
+            <h:outputText value="#{transaction.date}">
+              <f:converter converterId="localDateTimeConverter"/>
+            </h:outputText>
+          </div>
+          <div class="isCellDescription">
+            <h:outputText value="#{transaction.description}"/>
+          </div>
+          <div class="isCellAmount text-right">
+            <h:outputText value="#{transaction.amount}">
+              <f:convertNumber type="currency" locale="pt-BR"/>
+            </h:outputText>
+          </div>
+        </td>
+      </tr>
+    </ui:repeat>
+    </tbody>
+  </table>
 
-        <h:outputScript
-                library="webjars"
-                name="bootstrap/4.4.1-1/js/bootstrap.min.js"/>
+  <h:outputScript
+    library="webjars"
+    name="bootstrap/4.4.1-1/js/bootstrap.min.js"/>
 
-        <h:outputScript
-                library="webjars"
-                name="jquery/3.4.0/jquery.slim.min.js"/>
+  <h:outputScript
+    library="webjars"
+    name="jquery/3.4.0/jquery.slim.min.js"/>
 
-        <h:outputScript
-            library="webjars"
-            name="popper.js/1.14.3/umd/popper.js"/>
-    </h:body>
+  <h:outputScript
+    library="webjars"
+    name="popper.js/1.14.3/umd/popper.js"/>
+</h:body>
 </html>
