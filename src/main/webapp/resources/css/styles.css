@@ -18,3 +18,8 @@
 .isCellAmount {
   grid-area: isCellAmount;
 }
+
+.isCellReceipt {
+  grid-area: isCellReceipt;
+  margin: 10px 30px 10px 30px;
+}

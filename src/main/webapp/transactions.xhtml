@@ -2,13 +2,15 @@
 <html lang="en"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 
 <h:head>
   <meta charset="UTF-8"/>
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
-  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <meta http-equiv="X-UA-Compatible"
+        content="ie=edge"/>
 
   <title>Transactions</title>
 
@@ -22,53 +24,77 @@
 </h:head>
 
 <h:body>
-  <table class="table table-striped">
-    <caption>
-      <h:outputText value="List of Transactions"/>
-    </caption>
+  <h:form>
+    <table class="table table-striped">
+      <caption>
+        <h:outputText value="List of Transactions"/>
+      </caption>
 
-    <thead class="thead-dark">
-    <tr>
-      <th colspan="3" class="is-table-row">
-        <div class="isCellDate text-center">
-          <h:outputText value="Date"/>
-        </div>
-        <div class="isCellDescription text-center">
-          <h:outputText value="Description"/>
-        </div>
-        <div class="isCellAmount text-centet">
-          <h:outputText value="Amount"/>
-        </div>
-      </th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <ui:repeat value="#{transactionsController.transactions}" var="transaction">
+      <thead class="thead-dark">
       <tr>
-        <td colspan="3" class="is-table-row">
+        <th colspan="3" class="is-table-row">
           <div class="isCellDate text-center">
-            <h:outputText value="#{transaction.date}">
-              <f:converter converterId="localDateTimeConverter"/>
-            </h:outputText>
+            <h:outputText value="Date"/>
           </div>
-          <div class="isCellDescription">
-            <h:outputText value="#{transaction.description}"/>
+          <div class="isCellDescription text-center">
+            <h:outputText value="Description"/>
           </div>
-          <div class="isCellAmount text-right">
-            <h:outputText value="#{transaction.amount}">
-              <f:convertNumber type="currency" locale="pt-BR"/>
-            </h:outputText>
+          <div class="isCellAmount text-centet">
+            <h:outputText value="Amount"/>
           </div>
-        </td>
+        </th>
       </tr>
-    </ui:repeat>
-    </tbody>
-  </table>
+      </thead>
 
-  <h:outputScript
-    library="webjars"
-    name="bootstrap/4.4.1-1/js/bootstrap.min.js"/>
+      <tbody>
+        <ui:repeat value="#{transactionsController.transactions}" var="transaction" varStatus="index">
+          <tr>
+            <td colspan="3" class="is-table-row">
+              <!-- Date -->
+              <div class="isCellDate text-center">
+                <h:outputText value="#{transaction.date}">
+                  <f:converter converterId="localDateTimeConverter"/>
+                </h:outputText>
+              </div>
+
+              <!-- Description -->
+              <div class="isCellDescription">
+                <h:outputText value="#{transaction.description}"/>
+              </div>
+
+              <!-- Amount -->
+              <div class="isCellAmount text-right">
+                <h:outputText value="#{transaction.amount}">
+                  <f:convertNumber type="currency" locale="pt-BR"/>
+                </h:outputText>
+
+                <h:commandButton id="viewReceipt#{index.index}"
+                                 type="button"
+                                 value="View"
+                                 immediate="false"
+                                 action="#{transactionsController.viewReceipt(index.index)}"
+                                 styleClass="btn btn-primary"
+                                 p:data-toggle="collapse"
+                                 p:data-target="#receiptCard-#{index.index}"
+                                 p:aria-expanded="false"
+                                 p:aria-controls="receiptCard-#{index.index}">
+                  <f:ajax execute="@this"
+                    render="receipt"/>
+                </h:commandButton>
+              </div>
+
+              <!-- Receipt -->
+              <div id="receiptCard-#{index.index}" class="isCellReceipt card collapse">
+               <div class="card-body">
+                 <h:outputText id="receipt" escape="false" value="#{transactionsController.selectedReceipt}"/>
+               </div>
+              </div>
+            </td>
+          </tr>
+        </ui:repeat>
+      </tbody>
+    </table>
+  </h:form>
 
   <h:outputScript
     library="webjars"
@@ -77,5 +103,10 @@
   <h:outputScript
     library="webjars"
     name="popper.js/1.14.3/umd/popper.js"/>
+
+  <h:outputScript
+    library="webjars"
+    name="bootstrap/4.4.1-1/js/bootstrap.min.js"/>
+
 </h:body>
 </html>
